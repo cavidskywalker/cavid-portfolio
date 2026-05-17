@@ -24,7 +24,7 @@ body {
 
 }
 
-/* glow background */
+/* background glow */
 
 body::before {
 
@@ -68,11 +68,15 @@ h1 {
 
     font-size: 44px;
 
+    margin-bottom: 10px;
+
 }
 
 .subtitle {
 
     color: #00ffcc;
+
+    font-size: 18px;
 
 }
 
@@ -98,15 +102,15 @@ h1 {
 
     border-radius: 12px;
 
+    transition: 0.3s;
+
 }
 
 .section:hover {
 
-    border-color: #00ffcc;
-
     transform: scale(1.01);
 
-    transition: 0.3s;
+    border-color: #00ffcc;
 
 }
 
@@ -150,6 +154,24 @@ button {
 
 }
 
+.tag {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    margin: 5px;
+
+    background: #00ffcc;
+
+    color: black;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+}
+
 .footer {
 
     text-align: center;
@@ -186,7 +208,27 @@ button {
 
         <h2>About Me</h2>
 
-        <p>Student interested in cybersecurity, finance, and technology.</p>
+        <p>
+
+            I am a student interested in cybersecurity, finance, and technology.
+
+            I like analyzing systems, markets and building small tools.
+
+        </p>
+
+    </div>
+
+    <!-- FINANCE DASHBOARD -->
+
+    <div class="section">
+
+        <h2>Live Finance Dashboard</h2>
+
+        <div class="tag">Bitcoin: 68,200 USD</div>
+
+        <div class="tag">EUR/USD: 1.08</div>
+
+        <div class="tag">S&P 500: 5,200</div>
 
     </div>
 
@@ -226,6 +268,38 @@ button {
 
     </div>
 
+    <!-- CYBER SECURITY -->
+
+    <div class="section">
+
+        <h2>Cybersecurity Focus</h2>
+
+        <p>• Phishing & social engineering</p>
+
+        <p>• Network security (HTTP / DNS / HTTPS)</p>
+
+        <p>• Linux & terminal basics</p>
+
+        <p>• Ethical hacking & CTF practice</p>
+
+    </div>
+
+    <!-- PROJECTS -->
+
+    <div class="section">
+
+        <h2>Projects</h2>
+
+        <p>• Cyber Finance Portfolio Website</p>
+
+        <p>• Finance Calculator Tool</p>
+
+        <p>• Password Strength Checker</p>
+
+        <p>• Cybersecurity Notes Hub (planned)</p>
+
+    </div>
+
 </div>
 
 <div class="footer">
@@ -236,7 +310,7 @@ button {
 
 <script>
 
-/* FINANCE CALCULATOR */
+/* Finance Calculator */
 
 function calcFinance() {
 
@@ -262,7 +336,7 @@ function calcFinance() {
 
 }
 
-/* PASSWORD STRENGTH CHECKER */
+/* Password Checker */
 
 function checkPassword() {
 
@@ -278,15 +352,9 @@ function checkPassword() {
 
     if (/[^A-Za-z0-9]/.test(pass)) strength++;
 
-    let msg = "";
+    let levels = ["Weak", "Medium", "Strong", "Very Strong"];
 
-    if (strength <= 1) msg = "Weak";
-
-    else if (strength == 2) msg = "Medium";
-
-    else if (strength == 3) msg = "Strong";
-
-    else msg = "Very Strong";
+    let msg = levels[strength - 1] || "Weak";
 
     document.getElementById("passResult").innerText =
 
