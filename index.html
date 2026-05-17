@@ -143,7 +143,46 @@
             I enjoy building small projects and learning how systems work.
 
         </p>
+<script>
 
+async function getBTC() {
+
+    let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json");
+
+    let data = await res.json();
+
+    document.getElementById("btc").innerText =
+
+        "Bitcoin: $" + data.bpi.USD.rate;
+
+}
+
+getBTC();
+
+</script>
+<div class="section">
+
+    <h2>Cybersecurity Insights</h2>
+
+    <p>• Understanding phishing attacks and prevention</p>
+
+    <p>• Basics of network security (DNS, HTTP, HTTPS)</p>
+
+    <p>• Linux fundamentals for cybersecurity</p>
+
+    <p>• Ethical hacking principles (CTFs & labs)</p>
+
+ <div class="section">
+
+    <h2>Projects</h2>
+
+    <p>• Personal Portfolio Website (HTML/CSS)</p>
+
+    <p>• Simple Finance Calculator (planned)</p>
+
+    <p>• Cybersecurity Notes Hub (in progress)</p>
+
+    <p>• Market Data Tracker (coming soon)</p>       
     </div>
 
     <div class="section">
@@ -177,6 +216,13 @@
         <p>GitHub: <a href="https://github.com/">my profile</a></p>
 
     </div>
+.section:hover {
+
+    transform: scale(1.02);
+
+    transition: 0.3s;
+
+}
 
 </div>
 
