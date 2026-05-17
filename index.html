@@ -20,11 +20,11 @@ body {
 
     background: radial-gradient(circle at top, #0f0f0f, #000);
 
-    color: #fff;
+    color: white;
 
 }
 
-/* subtle animated glow */
+/* glow background */
 
 body::before {
 
@@ -32,23 +32,23 @@ body::before {
 
     position: fixed;
 
-    top: -50%;
-
-    left: -50%;
-
     width: 200%;
 
     height: 200%;
 
+    top: -50%;
+
+    left: -50%;
+
     background: radial-gradient(circle, rgba(0,255,200,0.08), transparent 40%);
 
-    animation: rotate 12s linear infinite;
+    animation: spin 12s linear infinite;
 
     z-index: -1;
 
 }
 
-@keyframes rotate {
+@keyframes spin {
 
     0% {transform: rotate(0deg);}
 
@@ -60,23 +60,19 @@ header {
 
     text-align: center;
 
-    padding: 70px 20px;
+    padding: 60px 20px;
 
 }
 
 h1 {
 
-    font-size: 46px;
-
-    margin-bottom: 10px;
+    font-size: 44px;
 
 }
 
 .subtitle {
 
     color: #00ffcc;
-
-    font-size: 18px;
 
 }
 
@@ -102,15 +98,15 @@ h1 {
 
     border-radius: 12px;
 
-    transition: 0.3s;
-
 }
 
 .section:hover {
 
-    transform: scale(1.02);
-
     border-color: #00ffcc;
+
+    transform: scale(1.01);
+
+    transition: 0.3s;
 
 }
 
@@ -120,29 +116,37 @@ h2 {
 
 }
 
-.tag {
+input {
 
-    display: inline-block;
-
-    padding: 6px 10px;
+    padding: 8px;
 
     margin: 5px;
 
-    background: #00ffcc;
-
-    color: #000;
+    border: none;
 
     border-radius: 6px;
 
-    font-size: 12px;
+}
+
+button {
+
+    padding: 10px;
+
+    background: #00ffcc;
+
+    border: none;
+
+    cursor: pointer;
+
+    margin-top: 10px;
 
 }
 
-a {
+.result {
+
+    margin-top: 10px;
 
     color: #00ffcc;
-
-    text-decoration: none;
 
 }
 
@@ -150,9 +154,9 @@ a {
 
     text-align: center;
 
-    padding: 30px;
-
     color: #666;
+
+    padding: 30px;
 
     font-size: 12px;
 
@@ -176,88 +180,49 @@ a {
 
 <div class="container">
 
+    <!-- ABOUT -->
+
     <div class="section">
 
         <h2>About Me</h2>
 
-        <p>
-
-            I am a student passionate about cybersecurity, finance, and technology.
-
-            I enjoy analyzing systems, markets, and building small projects.
-
-        </p>
+        <p>Student interested in cybersecurity, finance, and technology.</p>
 
     </div>
 
+    <!-- FINANCE CALCULATOR -->
+
     <div class="section">
 
-        <h2>Live Finance Dashboard</h2>
+        <h2>Finance Calculator</h2>
 
-        <div class="tag" id="btc">Bitcoin: 68,200 USD</div>
+        <input id="amount" placeholder="Initial amount ($)">
 
-        <div class="tag" id="usd">USD Index: 104.3</div>
+        <input id="rate" placeholder="Interest %">
 
-        <div class="tag">S&P 500: 5,200</div>
+        <input id="years" placeholder="Years">
+
+        <br>
+
+        <button onclick="calcFinance()">Calculate</button>
+
+        <div class="result" id="financeResult"></div>
 
     </div>
 
-    <div class="section">
-
-        <h2>Cybersecurity Focus</h2>
-
-        <p>• Phishing & social engineering attacks</p>
-
-        <p>• Network security (HTTP / DNS / HTTPS)</p>
-
-        <p>• Linux & terminal fundamentals</p>
-
-        <p>• Ethical hacking & CTF practice</p>
-
-    </div>
-<div class="section">
-
-    <h2>Finance Calculator</h2>
-
-    <p>Calculate future investment value with compound interest.</p>
-
-    <input id="amount" placeholder="Initial amount ($)" style="padding:8px; margin:5px;">
-
-    <input id="rate" placeholder="Annual interest (%)" style="padding:8px; margin:5px;">
-
-    <input id="years" placeholder="Years" style="padding:8px; margin:5px;">
-
-    <br><br>
-
-    <button onclick="calculate()" style="padding:10px; background:#00ffcc; border:none; cursor:pointer;">
-
-        Calculate
-
-    </button>
-
-    <p id="result" style="margin-top:10px; color:#00ffcc;"></p>
-
-</div>
-    
-    <div class="section">
-
-        <h2>Projects</h2>
-
-        <p>• Cyber Finance Portfolio Website</p>
-
-        <p>• Market Data Tracker (in progress)</p>
-
-        <p>• Cybersecurity Notes Hub</p>
-
-        <p>• Finance Calculator (planned)</p>
-
-    </div>
+    <!-- PASSWORD CHECKER -->
 
     <div class="section">
 
-        <h2>Contact</h2>
+        <h2>Password Strength Checker</h2>
 
-        <p>GitHub: <a href="https://github.com/">My Profile</a></p>
+        <input id="password" type="password" placeholder="Enter password">
+
+        <br>
+
+        <button onclick="checkPassword()">Check</button>
+
+        <div class="result" id="passResult"></div>
 
     </div>
 
@@ -268,6 +233,68 @@ a {
     © 2026 Cavid | Cyber Finance Portfolio
 
 </div>
+
+<script>
+
+/* FINANCE CALCULATOR */
+
+function calcFinance() {
+
+    let p = parseFloat(document.getElementById("amount").value);
+
+    let r = parseFloat(document.getElementById("rate").value) / 100;
+
+    let t = parseFloat(document.getElementById("years").value);
+
+    if (isNaN(p) || isNaN(r) || isNaN(t)) {
+
+        document.getElementById("financeResult").innerText = "Enter valid numbers";
+
+        return;
+
+    }
+
+    let result = p * Math.pow((1 + r), t);
+
+    document.getElementById("financeResult").innerText =
+
+        "Future Value: $" + result.toFixed(2);
+
+}
+
+/* PASSWORD STRENGTH CHECKER */
+
+function checkPassword() {
+
+    let pass = document.getElementById("password").value;
+
+    let strength = 0;
+
+    if (pass.length >= 8) strength++;
+
+    if (/[A-Z]/.test(pass)) strength++;
+
+    if (/[0-9]/.test(pass)) strength++;
+
+    if (/[^A-Za-z0-9]/.test(pass)) strength++;
+
+    let msg = "";
+
+    if (strength <= 1) msg = "Weak";
+
+    else if (strength == 2) msg = "Medium";
+
+    else if (strength == 3) msg = "Strong";
+
+    else msg = "Very Strong";
+
+    document.getElementById("passResult").innerText =
+
+        "Strength: " + msg;
+
+}
+
+</script>
 
 </body>
 
