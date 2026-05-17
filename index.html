@@ -4,117 +4,129 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portfolio</title>
+<title>Cyber Finance Portfolio</title>
 
-    <style>
+<style>
 
-        body {
+body {
 
-            margin: 0;
+    margin: 0;
 
-            font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
 
-            background: #0d0d0d;
+    background: radial-gradient(circle at top, #0f0f0f, #000);
 
-            color: #ffffff;
+    color: #fff;
 
-        }
+}
 
-        header {
+header {
 
-            text-align: center;
+    text-align: center;
 
-            padding: 80px 20px;
+    padding: 70px 20px;
 
-        }
+}
 
-        h1 {
+h1 {
 
-            font-size: 40px;
+    font-size: 42px;
 
-            margin-bottom: 10px;
+    margin-bottom: 10px;
 
-        }
+}
 
-        p {
+.subtitle {
 
-            color: #bbbbbb;
+    color: #00ffcc;
 
-            font-size: 18px;
+    font-size: 18px;
 
-        }
+}
 
-        .container {
+.container {
 
-            max-width: 900px;
+    max-width: 1000px;
 
-            margin: auto;
+    margin: auto;
 
-            padding: 20px;
+    padding: 20px;
 
-        }
+}
 
-        .section {
+.section {
 
-            margin-top: 40px;
+    background: rgba(255,255,255,0.05);
 
-            padding: 20px;
+    border: 1px solid #222;
 
-            background: #1a1a1a;
+    padding: 20px;
 
-            border-radius: 12px;
+    margin: 20px 0;
 
-        }
+    border-radius: 12px;
 
-        .section h2 {
+    transition: 0.3s;
 
-            color: #00ffcc;
+}
 
-        }
+.section:hover {
 
-        .tag {
+    transform: scale(1.02);
 
-            display: inline-block;
+    border-color: #00ffcc;
 
-            background: #00ffcc;
+}
 
-            color: #000;
+h2 {
 
-            padding: 5px 10px;
+    color: #00ffcc;
 
-            margin: 5px;
+}
 
-            border-radius: 8px;
+.tag {
 
-            font-size: 12px;
+    display: inline-block;
 
-        }
+    padding: 6px 10px;
 
-        footer {
+    margin: 5px;
 
-            text-align: center;
+    background: #00ffcc;
 
-            padding: 30px;
+    color: #000;
 
-            color: #666;
+    border-radius: 6px;
 
-            margin-top: 40px;
+    font-size: 12px;
 
-        }
+}
 
-        a {
+a {
 
-            color: #00ffcc;
+    color: #00ffcc;
 
-            text-decoration: none;
+    text-decoration: none;
 
-        }
+}
 
-    </style>
+.footer {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #666;
+
+    font-size: 12px;
+
+}
+
+</style>
 
 </head>
 
@@ -122,9 +134,9 @@
 
 <header>
 
-    <h1>Cavid</h1>
+    <h1>Your Name</h1>
 
-    <p>Aspiring Cybersecurity & Finance Student</p>
+    <div class="subtitle">Cybersecurity & Finance Enthusiast</div>
 
     <p>SAT: 1450 | IELTS: 8.0</p>
 
@@ -140,62 +152,35 @@
 
             I am a student interested in cybersecurity, finance, and technology.
 
-            I enjoy building small projects and learning how systems work.
+            I enjoy analyzing systems, markets, and building small projects.
 
         </p>
-<script>
 
-async function getBTC() {
-
-    let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json");
-
-    let data = await res.json();
-
-    document.getElementById("btc").innerText =
-
-        "Bitcoin: $" + data.bpi.USD.rate;
-
-}
-
-getBTC();
-
-</script>
-<div class="section">
-
-    <h2>Cybersecurity Insights</h2>
-
-    <p>• Understanding phishing attacks and prevention</p>
-
-    <p>• Basics of network security (DNS, HTTP, HTTPS)</p>
-
-    <p>• Linux fundamentals for cybersecurity</p>
-
-    <p>• Ethical hacking principles (CTFs & labs)</p>
-
- <div class="section">
-
-    <h2>Projects</h2>
-
-    <p>• Personal Portfolio Website (HTML/CSS)</p>
-
-    <p>• Simple Finance Calculator (planned)</p>
-
-    <p>• Cybersecurity Notes Hub (in progress)</p>
-
-    <p>• Market Data Tracker (coming soon)</p>       
     </div>
 
     <div class="section">
 
-        <h2>Skills</h2>
+        <h2>Live Finance Dashboard</h2>
 
-        <span class="tag">Python</span>
+        <div class="tag" id="btc">Bitcoin: loading...</div>
 
-        <span class="tag">Cybersecurity Basics</span>
+        <div class="tag">EUR/USD: coming soon</div>
 
-        <span class="tag">Finance Analysis</span>
+        <div class="tag">S&P 500: coming soon</div>
 
-        <span class="tag">HTML/CSS</span>
+    </div>
+
+    <div class="section">
+
+        <h2>Cybersecurity Focus</h2>
+
+        <p>• Phishing & social engineering attacks</p>
+
+        <p>• Network security fundamentals (HTTP / DNS / HTTPS)</p>
+
+        <p>• Linux & terminal basics</p>
+
+        <p>• Ethical hacking & CTF practice</p>
 
     </div>
 
@@ -203,9 +188,13 @@ getBTC();
 
         <h2>Projects</h2>
 
-        <p>• Personal portfolio website</p>
+        <p>• Portfolio Website (this site)</p>
 
-        <p>• More coming soon...</p>
+        <p>• Finance calculator (planned)</p>
+
+        <p>• Cybersecurity notes hub</p>
+
+        <p>• Market tracking tool (in progress)</p>
 
     </div>
 
@@ -213,15 +202,43 @@ getBTC();
 
         <h2>Contact</h2>
 
-        <p>GitHub: <a href="https://github.com/">my profile</a></p>
+        <p>GitHub: <a href="https://github.com/">Profile</a></p>
+
+    </div>
 
 </div>
 
-<footer>
+<div class="footer">
 
-    © 2026 My Portfolio
+    © 2026 Cyber Finance Portfolio
 
-</footer>
+</div>
+
+<script>
+
+async function loadBTC() {
+
+    try {
+
+        let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json");
+
+        let data = await res.json();
+
+        document.getElementById("btc").innerText =
+
+            "Bitcoin: $" + data.bpi.USD.rate;
+
+    } catch (e) {
+
+        document.getElementById("btc").innerText = "Bitcoin: error";
+
+    }
+
+}
+
+loadBTC();
+
+</script>
 
 </body>
 
