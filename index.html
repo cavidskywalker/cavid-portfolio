@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cyber Finance Portfolio</title>
+<title>Cavid | Cyber Finance Portfolio</title>
 
 <style>
 
@@ -24,6 +24,38 @@ body {
 
 }
 
+/* subtle animated glow */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    top: -50%;
+
+    left: -50%;
+
+    width: 200%;
+
+    height: 200%;
+
+    background: radial-gradient(circle, rgba(0,255,200,0.08), transparent 40%);
+
+    animation: rotate 12s linear infinite;
+
+    z-index: -1;
+
+}
+
+@keyframes rotate {
+
+    0% {transform: rotate(0deg);}
+
+    100% {transform: rotate(360deg);}
+
+}
+
 header {
 
     text-align: center;
@@ -34,7 +66,7 @@ header {
 
 h1 {
 
-    font-size: 42px;
+    font-size: 46px;
 
     margin-bottom: 10px;
 
@@ -134,7 +166,7 @@ a {
 
 <header>
 
-    <h1>Your Name</h1>
+    <h1>Cavid</h1>
 
     <div class="subtitle">Cybersecurity & Finance Enthusiast</div>
 
@@ -150,7 +182,7 @@ a {
 
         <p>
 
-            I am a student interested in cybersecurity, finance, and technology.
+            I am a student passionate about cybersecurity, finance, and technology.
 
             I enjoy analyzing systems, markets, and building small projects.
 
@@ -162,11 +194,11 @@ a {
 
         <h2>Live Finance Dashboard</h2>
 
-        <div class="tag" id="btc">Bitcoin: loading...</div>
+        <div class="tag" id="btc">Bitcoin: 68,200 USD</div>
 
-        <div class="tag">EUR/USD: coming soon</div>
+        <div class="tag" id="usd">USD Index: 104.3</div>
 
-        <div class="tag">S&P 500: coming soon</div>
+        <div class="tag">S&P 500: 5,200</div>
 
     </div>
 
@@ -176,9 +208,9 @@ a {
 
         <p>• Phishing & social engineering attacks</p>
 
-        <p>• Network security fundamentals (HTTP / DNS / HTTPS)</p>
+        <p>• Network security (HTTP / DNS / HTTPS)</p>
 
-        <p>• Linux & terminal basics</p>
+        <p>• Linux & terminal fundamentals</p>
 
         <p>• Ethical hacking & CTF practice</p>
 
@@ -188,13 +220,13 @@ a {
 
         <h2>Projects</h2>
 
-        <p>• Portfolio Website (this site)</p>
+        <p>• Cyber Finance Portfolio Website</p>
 
-        <p>• Finance calculator (planned)</p>
+        <p>• Market Data Tracker (in progress)</p>
 
-        <p>• Cybersecurity notes hub</p>
+        <p>• Cybersecurity Notes Hub</p>
 
-        <p>• Market tracking tool (in progress)</p>
+        <p>• Finance Calculator (planned)</p>
 
     </div>
 
@@ -202,7 +234,7 @@ a {
 
         <h2>Contact</h2>
 
-        <p>GitHub: <a href="https://github.com/">Profile</a></p>
+        <p>GitHub: <a href="https://github.com/">My Profile</a></p>
 
     </div>
 
@@ -210,35 +242,9 @@ a {
 
 <div class="footer">
 
-    © 2026 Cyber Finance Portfolio
+    © 2026 Cavid | Cyber Finance Portfolio
 
 </div>
-
-<script>
-
-async function loadBTC() {
-
-    try {
-
-        let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json");
-
-        let data = await res.json();
-
-        document.getElementById("btc").innerText =
-
-            "Bitcoin: $" + data.bpi.USD.rate;
-
-    } catch (e) {
-
-        document.getElementById("btc").innerText = "Bitcoin: error";
-
-    }
-
-}
-
-loadBTC();
-
-</script>
 
 </body>
 
